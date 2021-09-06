@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar.component';
 import Carditemsvideo from '../../components/Carditemsvideo/Carditemsvideo.component';
 import SideMenu from '../../components/Sidemenu/Sidemenu.component';
-import { VIDEO_MOCKS } from '../../mocks.js';
+import { VIDEO_MOCKS } from '../../mocks.jsx';
 
 function HomePage({ theme, setTheme }) {
   const [videos, setVideos] = useState([]);
