@@ -4,8 +4,9 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaSearch } from 'react-icons/fa';
 
 export const Nav = styled.nav`
-  background: #1C5476;
-  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  background: #1c5476;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%),
+    0px 1px 10px 0px rgb(0 0 0 / 12%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -62,16 +63,12 @@ const SearchButton = styled.button`
 `;
 
 export function SearchBar() {
-
   return (
     <FormSearch>
       <SearchButton>
         <FaSearch size="1rem" />
       </SearchButton>
-      <InputSearch
-        type="text"
-        placeholder="Search"
-      />
+      <InputSearch type="text" placeholder="Search" />
     </FormSearch>
   );
 }
