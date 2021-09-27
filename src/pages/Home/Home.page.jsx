@@ -1,38 +1,34 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Navbar from '../../components/Navbar/Navbar.component';
+import Carditemsvideo from '../../components/Carditemsvideo/Carditemsvideo.component';
+import SideMenu from '../../components/Sidemenu/Sidemenu.component';
+import { VIDEO_MOCKS } from '../../mocks.jsx';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+function HomePage({ theme, setTheme }) {
+  const [videos, setVideos] = useState([]);
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(VIDEO_MOCKS);
+        console.log(response);
+        const json = await response.json();
+        console.log(json.items);
+        setVideos(Object.values(json.items));
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+    fetchData();
+  }, []);
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <>
+      <Navbar />
+      <SideMenu theme={theme} setTheme={setTheme} />
+      <Carditemsvideo videos={videos} />
+    </>
   );
 }
 
