@@ -16,7 +16,7 @@ function Navbar() {
           control={<Switch />}
           label="Dark Mode"
         />
-        <FaRegUserCircle color="white" size="1.5rem" />
+        <FaRegUserCircle color="white" size="1.5rem" data-testid="user-img"/>
       </Nav>
     </>
   );
